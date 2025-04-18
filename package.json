@@ -1,0 +1,28 @@
+{
+  "name": "doc-generator",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "bin": {
+    "doc-generator": "./build/index.js"
+  },
+  "scripts": {
+    "build": "tsc &&  node -e \"console.log(require('path').join(__dirname, '..', 'templates'))\"",
+    "build:clean": "rm -rf build && mkdir build",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "files": [
+    "build"
+  ],
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "@modelcontextprotocol/sdk": "^1.10.0",
+    "zod": "^3.24.3"
+  },
+  "devDependencies": {
+    "@types/node": "^22.14.1",
+    "typescript": "^5.8.3"
+  }
+}
