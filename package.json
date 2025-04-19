@@ -1,12 +1,9 @@
 {
   "name": "doc-generator",
   "version": "1.0.0",
-  "description": "",
+  "description": "A MCP server for template-based documentation generation.",
   "type": "module",
   "main": "index.js",
-  "bin": {
-    "doc-generator": "./build/src/index.js"
-  },
   "scripts": {
     "build": "tsc && cp -r templates build/src/",
     "test": "jest",
@@ -18,9 +15,6 @@
     "format": "prettier --write \"**/**/*.ts\"",
     "check": "npm run lint && npm run test"
   },
-  "files": [
-    "build"
-  ],
   "keywords": [],
   "author": "",
   "license": "ISC",
