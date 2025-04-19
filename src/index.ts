@@ -4,6 +4,7 @@ import { z } from 'zod';
 import { fetchTemplate } from './template/fetchTemplate.js';
 import { readTemplate } from './template/readTemplate.js';
 import { listTemplates } from './template/listTemplate.js';
+import { generateDocs } from './generateDocs.js';
 
 const server = new McpServer({
   name: 'doc-generator',
@@ -31,6 +32,15 @@ server.tool(
     documentType: z.string(),
   },
   fetchTemplate,
+);
+
+server.tool(
+  'generate_docs',
+  'Return the recipie/instructions for llm to generate documentation for the given repository',
+  {
+    repositoryPath: z.string(),
+  },
+  generateDocs,
 );
 
 try {
