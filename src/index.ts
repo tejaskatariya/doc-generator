@@ -46,8 +46,8 @@ server.tool(
 
 server.tool(
   'list_controllers',
-  'Provide context to help llm identify all the controllers present in the repository',
-  { repositoryPath: z.string() },
+  'Provide context to help llm identify all the controllers present in the repository given repository path and language',
+  { repositoryPath: z.string(), language: z.string() },
   listControllers,
 );
 

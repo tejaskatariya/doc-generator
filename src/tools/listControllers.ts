@@ -1,32 +1,30 @@
 import { CallToolResult } from '@modelcontextprotocol/sdk/types.js';
+import { javaAPIPrompts } from '../prompts/api/java.js';
+import { APIPrompt } from '../prompts/api/api.js';
 
-const prompt = (repositoryPath: string): string => `
-You are an expert Java and Spring developer.
-
-Your task is to find all controller classes within the Spring application located at the ${repositoryPath}.
-
-To achieve this, you should:
-1.  Explore the directory structure of the repository starting from the given path. You can use other tools from filesystem mcp server to explore the repository. 
-2.  Focus your search within standard Spring Boot source directories, typically found under 'src/main/java'.
-3.  Identify files with the '.java' extension.
-4.  For each identified '.java' file, use 'filesystem mcp' to read its content.
-4.  Analyze the content of each file to determine if it contains a class annotated with '@Controller' or '@RestController'. These annotations indicate a controller class.
-
-Collect the full class names (including package) for all identified controller files or classes.
-
-After processing all relevant files, provide a single, clear list of the names of all identified controller classes.
-`;
+const getAPIPrompt = (language: string): APIPrompt => {
+  switch (language) {
+    case 'java':
+      return javaAPIPrompts;
+    default:
+      throw new Error(`Unsupported language: ${language}`);
+  }
+};
 
 export const listControllers = async ({
   repositoryPath,
+  language,
 }: {
   repositoryPath: string;
+  language: string;
 }): Promise<CallToolResult> => {
+  const apiPrompt = getAPIPrompt(language);
+
   return {
     content: [
       {
         type: 'text',
-        text: prompt(repositoryPath),
+        text: apiPrompt.listControllers(repositoryPath),
       },
     ],
   };
