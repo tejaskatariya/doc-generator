@@ -5,7 +5,9 @@
   "type": "module",
   "main": "index.js",
   "scripts": {
-    "build": "tsc && cp -r public build/",
+    "compile": "tsc && cp -r public build/",
+    "clean": "rm -rf dist build",
+    "build": "npm run clean && npm run compile && mkdir dist && cp -r build/src build/public dist/ && rm -r build",
     "test": "jest",
     "test:watch": "jest --watch",
     "test:coverage": "jest --coverage",
@@ -14,7 +16,7 @@
     "lint:fix": "eslint ./src ./tests --fix",
     "format": "prettier --write \"**/**/*.ts\"",
     "check": "npm run lint && npm run test",
-    "debug": "npm run build && npx @modelcontextprotocol/inspector node ./build/src/index.js",
+    "debug": "npm run build && npx @modelcontextprotocol/inspector node ./dist/src/index.js",
     "dev": "nodemon --watch src --watch public --ext ts,md --exec \"npm run debug\""
   },
   "keywords": [],
