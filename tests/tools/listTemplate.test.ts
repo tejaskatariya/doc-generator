@@ -1,6 +1,6 @@
-import { listTemplates } from '../../src/template/listTemplate.js';
+import { listTemplates } from '../../src/tools/listTemplate.js';
 
-jest.mock('../../src/template/constants.js', () => ({
+jest.mock('../../src/tools/constants.js', () => ({
   templates: {
     api: {
       filename: 'api-documentation.md',

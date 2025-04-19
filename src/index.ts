@@ -1,10 +1,10 @@
 import { McpServer } from '@modelcontextprotocol/sdk/server/mcp.js';
 import { StdioServerTransport } from '@modelcontextprotocol/sdk/server/stdio.js';
 import { z } from 'zod';
-import { fetchTemplate } from './template/fetchTemplate.js';
-import { readTemplate } from './template/readTemplate.js';
-import { listTemplates } from './template/listTemplate.js';
-import { generateDocs } from './generateDocs.js';
+import { fetchTemplate } from './tools/fetchTemplate.js';
+import { readTemplate } from './tools/readTemplate.js';
+import { listTemplates } from './tools/listTemplate.js';
+import { generateDocs } from './tools/generateDocs.js';
 
 const server = new McpServer({
   name: 'doc-generator',

@@ -1,4 +1,4 @@
-import { listTemplates } from '../../src/template/listTemplate.js';
+import { listTemplates } from '../../src/tools/listTemplate.js';
 import * as fs from 'fs/promises';
 import * as path from 'path';
 

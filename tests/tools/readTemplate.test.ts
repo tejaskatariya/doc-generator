@@ -1,10 +1,10 @@
 import path from 'path';
-import { readTemplate } from '../../src/template/readTemplate.js';
+import { readTemplate } from '../../src/tools/readTemplate.js';
 
-jest.mock('../../src/template/utils.js', () => {
+jest.mock('../../src/tools/utils.js', () => {
   return {
-    ...jest.requireActual<typeof import('../../src/template/utils.js')>(
-      '../../src/template/utils.js',
+    ...jest.requireActual<typeof import('../../src/tools/utils.js')>(
+      '../../src/tools/utils.js',
     ),
     templatesDir: path.resolve(__dirname, '..', 'data', 'templates'),
     isValidTemplateId: jest
@@ -13,7 +13,7 @@ jest.mock('../../src/template/utils.js', () => {
   };
 });
 
-jest.mock('../../src/template/constants.js', () => ({
+jest.mock('../../src/tools/constants.js', () => ({
   templates: {
     api: {
       filename: 'api-documentation.md',
