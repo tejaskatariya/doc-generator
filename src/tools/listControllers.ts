@@ -1,23 +1,13 @@
 import { CallToolResult } from '@modelcontextprotocol/sdk/types.js';
-import { javaAPIPrompts } from '../prompts/api/java.js';
-import { APIPrompt } from '../prompts/api/api.js';
+import { getAPIPrompt } from './utils.js';
 
-const getAPIPrompt = (language: string): APIPrompt => {
-  switch (language) {
-    case 'java':
-      return javaAPIPrompts;
-    default:
-      throw new Error(`Unsupported language: ${language}`);
-  }
-};
-
-export const listControllers = async ({
+export const listControllers = ({
   repositoryPath,
   language,
 }: {
   repositoryPath: string;
   language: string;
-}): Promise<CallToolResult> => {
+}): CallToolResult => {
   const apiPrompt = getAPIPrompt(language);
 
   return {
