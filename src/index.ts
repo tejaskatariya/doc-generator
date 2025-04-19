@@ -5,6 +5,7 @@ import { fetchTemplate } from './tools/fetchTemplate.js';
 import { readTemplate } from './tools/readTemplate.js';
 import { listTemplates } from './tools/listTemplate.js';
 import { generateDocs } from './tools/generateDocs.js';
+import { listControllers } from './tools/listControllers.js';
 
 const server = new McpServer({
   name: 'doc-generator',
@@ -41,6 +42,13 @@ server.tool(
     repositoryPath: z.string(),
   },
   generateDocs,
+);
+
+server.tool(
+  'list_controllers',
+  'Provide context to help llm identify all the controllers present in the repository',
+  { repositoryPath: z.string() },
+  listControllers,
 );
 
 try {
